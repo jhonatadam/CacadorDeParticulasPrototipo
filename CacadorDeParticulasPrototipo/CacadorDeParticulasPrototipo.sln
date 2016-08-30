@@ -1,7 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{3ECD15CF-EB82-5F66-DE61-989056949CB9}") = "CacadorDeParticulasPrototipo", "Assembly-CSharp.csproj", "{81AA8B8D-071A-F06C-44A0-B595F6476627}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacadorDeParticulasPrototipo.CSharp", "CacadorDeParticulasPrototipo.CSharp.csproj", "{1031C18A-05B2-D517-543C-75ED38917C16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{81AA8B8D-071A-F06C-44A0-B595F6476627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81AA8B8D-071A-F06C-44A0-B595F6476627}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81AA8B8D-071A-F06C-44A0-B595F6476627}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81AA8B8D-071A-F06C-44A0-B595F6476627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1031C18A-05B2-D517-543C-75ED38917C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1031C18A-05B2-D517-543C-75ED38917C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1031C18A-05B2-D517-543C-75ED38917C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1031C18A-05B2-D517-543C-75ED38917C16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
