@@ -9,12 +9,17 @@ public class PlayerController : MonoBehaviour {
 
     public GameObject forceField;
 
-    private bool isFacingRight = true;
+    private Animator anim;
 
-	void Start () {
-	
-	}
-	
+    private bool isFacingRight = true;
+    public GroundCheckController groundCheck;
+
+    void Start ()
+    {
+        anim = GetComponent<Animator>();
+
+    }
+
 	void Update ()
     {
 
@@ -30,6 +35,8 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate ()
     {
+
+        print (groundCheck.isGrounded());
         float horizontalMovement = Input.GetAxis("Horizontal");
 
         rb2d.velocity = new Vector2(horizontalMovement * speed, rb2d.velocity.y);
@@ -43,7 +50,16 @@ public class PlayerController : MonoBehaviour {
         {
             isFacingRight = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
-        }    
+        }
 
+        //anim.Play("Walking");
+        if (horizontalMovement != 0)
+        {
+            anim.SetTrigger("walk");
+        }
+        else
+        {
+            anim.SetTrigger("stop");
+        }
     }
 }

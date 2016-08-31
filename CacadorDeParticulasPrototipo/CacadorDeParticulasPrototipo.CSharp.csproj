@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\GroundCheckController.cs" />
     <Compile Include="Assets\Scripts\FieldEffectController.cs" />
     <Compile Include="Assets\Scripts\ForceFieldController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
