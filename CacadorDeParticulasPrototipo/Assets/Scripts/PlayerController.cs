@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update ()
     {
+
 	    if (Input.GetKeyDown (KeyCode.W))
         {
             rb2d.AddForce(new Vector2(0, jumpForce));
