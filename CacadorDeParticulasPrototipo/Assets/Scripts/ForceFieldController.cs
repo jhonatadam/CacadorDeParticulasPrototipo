@@ -7,20 +7,34 @@ public class ForceFieldController : MonoBehaviour {
     public GameObject fieldEffectGreen;
     public GameObject fieldEffectBlue;
 
+    public float updatePerSecond;
+    public float changeFactor;
+
+    private float enlapsedTime = 0.0f;
+
+
 	void Update () {
-	    if (Random.value < 0.2)
-        {
-            fieldEffectRed.active = !fieldEffectRed.active;
-        }
 
-        if (Random.value < 0.2)
-        {
-            fieldEffectGreen.active = !fieldEffectGreen.active;
-        }
+        enlapsedTime += Time.deltaTime;
 
-        if (Random.value < 0.2)
+        if (enlapsedTime > 1 / updatePerSecond)
         {
-            fieldEffectBlue.active = !fieldEffectBlue.active;
+            enlapsedTime -= (1 / updatePerSecond);
+
+            if (Random.value < changeFactor)
+            {
+                fieldEffectRed.SetActive(!fieldEffectRed.activeSelf);
+            }
+
+            if (Random.value < changeFactor)
+            {
+                fieldEffectGreen.SetActive(!fieldEffectGreen.activeSelf);
+            }
+
+            if (Random.value < changeFactor)
+            {
+                fieldEffectBlue.SetActive(!fieldEffectBlue.activeSelf);
+            }
         }
     }
 }
