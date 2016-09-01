@@ -22,11 +22,14 @@ public class PlayerController : MonoBehaviour {
 
 	void Update ()
     {
-
-	    if (Input.GetKeyDown (KeyCode.W))
+        if (groundCheck.isGrounded())
         {
-            rb2d.AddForce(new Vector2(0, jumpForce));
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                rb2d.AddForce(new Vector2(0, jumpForce));
+            }
         }
+
         if (Input.GetKeyDown (KeyCode.F))
         {
             forceField.SetActive(!forceField.activeSelf);
@@ -36,7 +39,6 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate ()
     {
 
-        print (groundCheck.isGrounded());
         float horizontalMovement = Input.GetAxis("Horizontal");
 
         rb2d.velocity = new Vector2(horizontalMovement * speed, rb2d.velocity.y);
@@ -52,14 +54,21 @@ public class PlayerController : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        //anim.Play("Walking");
-        if (horizontalMovement != 0)
+        if (groundCheck.isGrounded())
         {
-            anim.SetTrigger("walk");
+            if (horizontalMovement != 0)
+            {
+                anim.SetTrigger("walk");
+            }
+            else
+            {
+                anim.SetTrigger("stop");
+            }
         }
         else
         {
-            anim.SetTrigger("stop");
+            anim.SetTrigger("jump");
         }
+
     }
 }
