@@ -72,10 +72,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraController.cs" />
-    <Compile Include="Assets\GroundCheckController.cs" />
+    <Compile Include="Assets\MoveableObject.cs" />
+    <Compile Include="Assets\MoveableObjectController.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\FieldEffectController.cs" />
     <Compile Include="Assets\Scripts\ForceFieldController.cs" />
+    <Compile Include="Assets\Scripts\GroundCheckController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>

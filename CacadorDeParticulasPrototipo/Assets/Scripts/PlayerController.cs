@@ -34,6 +34,20 @@ public class PlayerController : MonoBehaviour {
         {
             forceField.SetActive(!forceField.activeSelf);
         }
+
+        if (Input.GetKey (KeyCode.LeftControl))
+        {
+            if (Time.timeScale > 0.2f)
+            {
+                Time.timeScale -= 0.1f;
+            }
+        }
+        else
+        {
+            if (Time.timeScale < 1.0f)
+            Time.timeScale += 0.1f;
+        }
+
 	}
 
     void FixedUpdate ()
