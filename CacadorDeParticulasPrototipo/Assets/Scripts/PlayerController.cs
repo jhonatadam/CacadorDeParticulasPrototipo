@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpForce;
 
     public GameObject forceField;
+	public AudioSource musicSource;
 
     private Animator anim;
 
@@ -17,7 +18,6 @@ public class PlayerController : MonoBehaviour {
     void Start ()
     {
         anim = GetComponent<Animator>();
-
     }
 
 	void Update ()
@@ -33,7 +33,13 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown (KeyCode.F))
         {
             forceField.SetActive(!forceField.activeSelf);
-        }
+			if (musicSource.isPlaying) {
+				musicSource.Pause ();
+			} else {
+				musicSource.Play ();
+			}
+
+        }	
 
         if (Input.GetKey (KeyCode.LeftControl))
         {

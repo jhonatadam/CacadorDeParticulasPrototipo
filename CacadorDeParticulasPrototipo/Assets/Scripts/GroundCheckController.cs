@@ -16,7 +16,10 @@ public class GroundCheckController : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        grounded = false;
+		if (other.gameObject.tag == "Ground")
+		{
+			grounded = false;
+		}
     }
 
     public bool isGrounded ()
