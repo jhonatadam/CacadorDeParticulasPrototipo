@@ -3,6 +3,11 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	private float life = 100.0f;
+	private float energy = 0.0f;
+
+	public PlayerStateCanvasController playerStateCanvas;
+
     public Rigidbody2D rb2d;
     public float speed;
     public float jumpForce;
@@ -12,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 
     private Animator anim;
 
-    private bool isFacingRight = true;
+    private bool isFacingRight;
     public GroundCheckController groundCheck;
 
     void Start ()
@@ -32,14 +37,20 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown (KeyCode.F))
         {
-            forceField.SetActive(!forceField.activeSelf);
-			if (musicSource.isPlaying) {
-				musicSource.Pause ();
-			} else {
-				musicSource.Play ();
+			if (energy > 0.0f) {
+				forceField.SetActive(!forceField.activeSelf);
+				if (musicSource.isPlaying) {
+					musicSource.Pause ();
+				} else {
+					musicSource.Play ();
+				}
 			}
-
         }	
+
+		if (energy <= 0.0f) {
+			forceField.SetActive (false);
+			musicSource.Pause ();
+		}
 
         if (Input.GetKey (KeyCode.LeftControl))
         {
@@ -53,6 +64,7 @@ public class PlayerController : MonoBehaviour {
             if (Time.timeScale < 1.0f)
             Time.timeScale += 0.1f;
         }
+
 
 	}
 
@@ -74,21 +86,43 @@ public class PlayerController : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (groundCheck.isGrounded())
-        {
-            if (horizontalMovement != 0)
-            {
+        if (groundCheck.isGrounded()) {
+            if (horizontalMovement != 0) {
                 anim.SetTrigger("walk");
             }
-            else
-            {
+            else {
                 anim.SetTrigger("stop");
             }
-        }
-        else
-        {
+        } else {
             anim.SetTrigger("jump");
         }
 
+		if (forceField.activeSelf) {
+			energy -= 0.1f;
+			playerStateCanvas.SetEnergyBar (energy / 100.0f);
+		}
     }
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.tag == "GoodParticle") {
+			Destroy (other.gameObject);
+			energy += 10.0f;
+			if (energy > 100.0f) {
+				energy = 100.0f;
+			}
+			playerStateCanvas.SetEnergyBar (energy / 100.0f);
+		}
+
+		if (other.gameObject.tag == "BadParticle") {
+			Destroy (other.gameObject);
+			float damage = 10.0f;
+			if (life > damage) {
+				life -= damage;
+				playerStateCanvas.SetLifeBar (life / 100.0f);
+			} else {
+				// morreu
+			}
+		}
+	}
 }
