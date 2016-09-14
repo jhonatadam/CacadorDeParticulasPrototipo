@@ -87,14 +87,14 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (groundCheck.isGrounded()) {
-            if (horizontalMovement != 0) {
+			if (rb2d.velocity.x != 0.0f) {
                 anim.SetTrigger("walk");
             }
             else {
                 anim.SetTrigger("stop");
             }
         } else {
-            anim.SetTrigger("jump");
+				anim.SetTrigger ("jump");
         }
 
 		if (forceField.activeSelf) {
